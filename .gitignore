@@ -1,0 +1,14 @@
+# Ignore all the heavy files and the vectorial DB
+data/audio_files/
+data/chroma_db/
+data/audio_catalog.csv
+
+# Ignore all the Python VENVs 
+venv/
+env/
+.env
+
+# Ignore system cache and Python
+__pycache__/
+*.pyc
+.DS_Store

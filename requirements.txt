@@ -1,0 +1,8 @@
+streamlit
+chromadb
+soundfile
+librosa
+numpy
+matplotlib
+pandas
+requests
