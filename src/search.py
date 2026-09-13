@@ -55,4 +55,4 @@ def query_acoustic_database(query_vector, n_results=5):
     
     
 if __name__ == "__main__":
-    print("Search script started.")
+    print("Search script started. Run streamlit app.py")
