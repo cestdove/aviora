@@ -5,7 +5,10 @@ env/
 .env
 .venv/
 .venv-1/
-data/
+
+# Remove too much big downloaded stuff :)
+data/audio_files/
+data/chroma_db/
 
 # Ignore system cache and Python
 

@@ -6,11 +6,10 @@ import time
 import requests 
 import pandas as pd
 
-def build_european_birds_dataset(samples_per_bird=40):
+def build_european_birds_dataset(samples_per_bird=50):
     # Dictionary of some common species in Scientific Latin and Italian
     target_birds = {
         # Original ones
-        "Passer italiae": "Passero",
         "Turdus merula": "Merlo",
         "Parus major": "Cinciallegra",
         "Streptopelia decaocto": "Tortora", 
@@ -22,7 +21,11 @@ def build_european_birds_dataset(samples_per_bird=40):
         "Carduelis carduelis": "Cardellino",
         "Luscinia megarhynchos": "Usignolo",
         "Troglodytes troglodytes": "Scricciolo",
-        "Alauda arvensis": "Allodola"
+        "Alauda arvensis": "Allodola",
+
+        # Last one yet lol
+        "Sturnus vulgaris": "Storno",
+        "Passer domesticus": "Passero domestico",
     }
 
     audio_dir = "data/audio_files"  
@@ -51,7 +54,7 @@ def build_european_birds_dataset(samples_per_bird=40):
         # v3 requires field tags (gen:, sp:, cnt:, q:, ...) for every search
         # term - it no longer accepts bare free text like "Passer italiae".
         genus, _, species = scientific_name.partition(" ")
-        query_str = f"gen:{genus} sp:{species} q:A cnt:Italy"
+        query_str = f"gen:{genus} sp:{species} q:A"
 
         try:
             # Using only User-Agent to not get blocked by anti-bot systems
@@ -138,4 +141,4 @@ def build_european_birds_dataset(samples_per_bird=40):
 
 
 if __name__ == "__main__":
-    build_european_birds_dataset(samples_per_bird=40)
+    build_european_birds_dataset(samples_per_bird=50)
