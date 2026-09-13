@@ -16,12 +16,13 @@ Upload a recording (or short snippet), and the app extracts its acoustic "finger
 
 ```text
 .
-├── app.py             # Streamlit web app
-├── audio_utils.py     # MFCC feature extraction and audio utilities
-├── birds.py           # Dataset builder — downloads bird songs
-├── ingest.py          # Feature extraction and ChromaDB ingestion
-├── search.py          # ChromaDB similarity search
-└── data/              # Runtime-generated dataset and vector database
+├── src/
+│   ├── app.py             # Streamlit web app
+│   ├── audio_utils.py     # MFCC feature extraction and audio utilities
+│   ├── birds.py           # Dataset builder — downloads bird songs
+│   ├── ingest.py          # Feature extraction and ChromaDB ingestion
+│   └── search.py          # ChromaDB similarity search
+└── data/                  # Runtime-generated dataset and vector database
 ```
 
 ## Species covered
@@ -86,23 +87,22 @@ Run these steps in order the first time:
 **1. Build the dataset**
 
 ```bash
-python birds.py
+python src/birds.py
 ```
 
 **2. Ingest the dataset into ChromaDB**
 
 ```bash
-python ingest.py
+python src/ingest.py
 ```
 
 **3. Launch the search app**
 
 ```bash
-streamlit run app.py
+streamlit run src/app.py
 ```
 
 Then upload an audio file and explore the most similar bird recordings.
-
 
 ## Notes
 

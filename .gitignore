@@ -9,6 +9,7 @@ env/
 # Remove too much big downloaded stuff :)
 data/audio_files/
 data/chroma_db/
+data/audio_catalog.csv
 
 # Ignore system cache and Python
 
