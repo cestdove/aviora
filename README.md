@@ -1,8 +1,8 @@
 # Aviora
 
-A bioacoustic search engine that lets you upload an audio clip and find the most similar bird songs in a local database, using **MFCC feature extraction**, **ChromaDB** vector search, and a **Streamlit** front end.
+A bioacoustic search engine that lets you upload an audio clip and find the most similar bird songs in a local database, using **MFCC feature extraction**, **ChromaDB** vector search, and a **Gradio** web interface.
 
-Upload a recording (or short snippet), and the app extracts its acoustic "fingerprint", compares it against bird songs sourced from [Xeno-Canto](https://xeno-canto.org), and returns the closest matches with audio playback and spectrograms.
+Upload a recording (or short snippet), and the app extracts its acoustic "fingerprint", compares it against bird songs sourced from [Xeno-Canto](https://xeno-canto.org), and returns the closest matches with audio playback and mel-spectrograms.
 
 ## How it works
 
@@ -10,14 +10,14 @@ Upload a recording (or short snippet), and the app extracts its acoustic "finger
 2. **Feature extraction** (`audio_utils.py`) — Applies HPSS, computes MFCCs, and pools them into a fixed-length feature vector.
 3. **Ingestion** (`ingest.py`) — Stores the extracted vectors in a persistent ChromaDB collection using L2 distance.
 4. **Search** (`search.py`) — Performs nearest-neighbor search against the ChromaDB collection.
-5. **Web app** (`app.py`) — Streamlit interface for uploading audio and viewing similar recordings with playback and mel-spectrograms.
+5. **Web app** (`app.py`) — Gradio interface for uploading or recording audio and viewing similar recordings with playback and mel-spectrograms.
 
 ## Project structure
 
 ```text
 .
 ├── src/
-│   ├── app.py             # Streamlit web app
+│   ├── app.py             # Gradio web app
 │   ├── audio_utils.py     # MFCC feature extraction and audio utilities
 │   ├── birds.py           # Dataset builder — downloads bird songs
 │   ├── ingest.py          # Feature extraction and ChromaDB ingestion
@@ -54,7 +54,7 @@ The species list lives in the `target_birds` dictionary in `birds.py` and can be
 Python packages:
 
 ```text
-streamlit
+gradio
 chromadb
 soundfile
 librosa
@@ -84,25 +84,27 @@ export XENO_CANTO_API_KEY=your_key_here
 
 Run these steps in order the first time:
 
-**1. Build the dataset**
+### 1. Build the dataset
 
 ```bash
 python src/birds.py
 ```
 
-**2. Ingest the dataset into ChromaDB**
+### 2. Ingest the dataset into ChromaDB
 
 ```bash
 python src/ingest.py
 ```
 
-**3. Launch the search app**
+### 3. Launch the search app
 
 ```bash
-streamlit run src/app.py
+python src/app.py
 ```
 
-Then upload an audio file and explore the most similar bird recordings.
+The Gradio interface will open automatically in your default browser.
+
+Then upload or record an audio file and explore the most similar bird recordings.
 
 ## Notes
 
