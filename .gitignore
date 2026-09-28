@@ -11,6 +11,9 @@ data/audio_files/
 data/chroma_db/
 data/audio_catalog.csv
 
+# Ignore pretrained model weights
+weights/
+
 # Ignore system cache and Python
 
 __pycache__/
